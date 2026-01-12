@@ -1,0 +1,11 @@
+*.bak.*
+*.log
+/tmp/
+.DS_Store
+*.key
+*.pem
+*.crt
+*.env
+tskey.txt
+authorized_keys
+id_*

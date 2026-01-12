@@ -1,0 +1,12 @@
+[Unit]
+Description=DERP IP/ACL updater
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+EnvironmentFile=-/etc/derp/derp.env
+ExecStart=/usr/local/lib/derp-relay/update_derp_ip.sh
+
+[Install]
+WantedBy=multi-user.target

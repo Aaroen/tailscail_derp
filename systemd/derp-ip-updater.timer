@@ -1,0 +1,11 @@
+[Unit]
+Description=Run DERP IP/ACL updater hourly
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=1h
+RandomizedDelaySec=2min
+Unit=derp-ip-updater.service
+
+[Install]
+WantedBy=timers.target

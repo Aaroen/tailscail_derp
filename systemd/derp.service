@@ -1,0 +1,23 @@
+[Unit]
+Description=Tailscale DERP Server
+After=network.target
+
+[Service]
+User=root
+Group=root
+EnvironmentFile=-/etc/derp/derp.env
+
+# 最小化默认值；具体值通过 /etc/derp/derp.env 覆盖
+ExecStart=/usr/local/lib/derp-relay/start_derper.sh
+
+Restart=always
+RestartSec=2
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/etc/derp /var/log /var/lib/derper
+
+[Install]
+WantedBy=multi-user.target
