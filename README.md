@@ -6,9 +6,7 @@
 - 自动探测服务器公网 IP
 - 使用 Tailscale API access token 自动把最新节点信息写入 tailnet 的 ACL（**仅更新 `derpMap`，不覆盖其它 ACL 字段**）
 
-本仓库不包含任何密钥/证书私钥；敏感信息仅放在服务器本地（例如 `/etc/derp/derp.env`）。
-
-提示：GitHub 的 Contributors 统计可能有缓存延迟，提交作者修正后需要等待刷新。
+本项目不存储任何密钥/证书私钥；敏感信息仅放在服务器本地（例如 `/etc/derp/derp.env`）。
 
 ## 适用方案
 
