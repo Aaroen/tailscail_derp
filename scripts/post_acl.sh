@@ -32,7 +32,9 @@ main() {
   local tmp_out="/tmp/tailscale_acl_updated.json"
 
   log "获取当前 ACL..."
-  curl -fsS --header "Authorization: Bearer ${TAILSCALE_API_KEY}" "$url" >"$tmp_in"
+  # 必须请求 application/json:Tailscale ACL API 默认返回 HuJSON(带注释/尾逗号),
+  # 下方 python json 模块无法解析,会 404/解析失败。加此 header 让其返回纯 JSON。
+  curl -fsS --header "Authorization: Bearer ${TAILSCALE_API_KEY}" --header "Accept: application/json" "$url" >"$tmp_in"
 
   log "仅更新 derpMap（不覆盖其它 ACL 字段）..."
   python3 - "$tmp_in" "$tmp_out" <<'PY'
